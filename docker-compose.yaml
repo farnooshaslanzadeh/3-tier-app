@@ -1,0 +1,15 @@
+# This task is to build a 3-tier application, each component written in a different language. Frontend application with React, a javascript framework; web application with Java and application logic with Python. 
+#
+# There is a directory for each application. Each component has a directory with their source code and a README file. In each README there are instructions to build the application image. You must create a Dockerfile in each application's directory. 
+#
+# Then build and launch them with this docker-compose.yml file. This docker compose.yml file has names of three services but you must fill the rest to build and launch applications correctly. 
+
+version: '3'
+
+services:
+  frontend:
+    # fill 
+  app-sentiment:
+    # fill
+  logic:
+    # fill
