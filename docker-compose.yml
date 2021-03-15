@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  frontend:
+     restart: always
+     image: node:12-alpine3.10
+
+  app-sentiment:
+    restart: always
+    image: maven:3.6.3-openjdk-16 
+  
+  logic:
+   restart: always
+   image:  python:3.6-slim
