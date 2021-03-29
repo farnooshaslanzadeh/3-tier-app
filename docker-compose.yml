@@ -1,14 +1,31 @@
-version: '3'
-
+version: "3"
+  
 services:
   frontend:
-     restart: always
-     image: node:12-alpine3.10
+    build: ./frontend
+    restart: always
+    image: frontend
+    container_name: frontend
+    depends_on:
+      -  app-sentiment
+    ports:
+      - 80:3000
 
   app-sentiment:
+    build: ./webapp
     restart: always
-    image: maven:3.6.3-openjdk-16 
-  
+    image: webapp
+    container_name: webapp
+    depends_on:
+      - logic
+    ports:
+      - 5000
   logic:
-   restart: always
-   image:  python:3.6-slim
+ build: ./logic
+    restart: always
+    image:  logic
+    container_name: logic
+    ports:
+      - "5000:8080"
+    environment:
+      - SA_LOGIC_API_URL=http://localhost:5000
