@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
   
 services:
   frontend:
@@ -9,7 +9,7 @@ services:
     depends_on:
       -  app-sentiment
     ports:
-      - 80:3000
+      - 3000:80
 
   app-sentiment:
     build: ./webapp
@@ -19,13 +19,11 @@ services:
     depends_on:
       - logic
     ports:
-      - 5000
+      - 8080:8080
+    environment:
+      - SA_LOGIC_API_URL=http://logic:5000
   logic:
- build: ./logic
+    build: ./logic
     restart: always
     image:  logic
     container_name: logic
-    ports:
-      - "5000:8080"
-    environment:
-      - SA_LOGIC_API_URL=http://localhost:5000
